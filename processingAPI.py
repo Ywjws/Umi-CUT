@@ -74,6 +74,8 @@ class imgProssing:
             self.border = border
             # 2.4. 裁剪
             img = self.img["manualCut"][border[0]:border[1], border[2]:border[3]]
+            if img.size == 0 or img.shape[0] < 2 or img.shape[1] < 2:
+                img = self.img["manualCut"]  # 图像为空或长宽小于2px则回退原图
             # self.img["borderCut"] = img
 
         # 3. 重设大小
